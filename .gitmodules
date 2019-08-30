@@ -1,0 +1,3 @@
+[submodule "xv6_2009"]
+	path = xv6_2009
+	url = https://github.com/mit-pdos/xv6-public
