@@ -1,6 +1,0 @@
-[submodule "xv6"]
-	path = xv6
-	url = https://github.com/mit-pdos/xv6-riscv.git
-[submodule "xv6_books"]
-	path = xv6_books
-	url = https://github.com/mit-pdos/xv6-riscv-book.git
