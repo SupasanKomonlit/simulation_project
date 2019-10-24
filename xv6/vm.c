@@ -26,6 +26,9 @@ seginit(void)
   c->gdt[SEG_KDATA] = SEG(STA_W, 0, 0xffffffff, 0);
   c->gdt[SEG_UCODE] = SEG(STA_X|STA_R, 0, 0xffffffff, DPL_USER);
   c->gdt[SEG_UDATA] = SEG(STA_W, 0, 0xffffffff, DPL_USER);
+
+  cprintf("File vm.c function seginit beforce call lgdt\n");
+
   lgdt(c->gdt, sizeof(c->gdt));
 }
 

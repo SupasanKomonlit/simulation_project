@@ -325,7 +325,7 @@ scheduler(void)
   struct proc *p;
   struct cpu *c = mycpu();
   c->proc = 0;
-  
+  cprintf("function scheduler in proc.c\n");  
   for(;;){
     // Enable interrupts on this processor.
     sti();

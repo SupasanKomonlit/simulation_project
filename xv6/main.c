@@ -17,6 +17,7 @@ extern char end[]; // first address after kernel loaded from ELF file
 int
 main(void)
 {
+  cprintf("function main in main.c before kinit1\n");
   kinit1(end, P2V(4*1024*1024)); // phys page allocator
   kvmalloc();      // kernel page table
   mpinit();        // detect other processors
@@ -42,6 +43,7 @@ static void
 mpenter(void)
 {
   switchkvm();
+  cprintf("function mpenter from other cpu\n");
   seginit();
   lapicinit();
   mpmain();
@@ -54,7 +56,9 @@ mpmain(void)
   cprintf("cpu%d: starting %d\n", cpuid(), cpuid());
   idtinit();       // load idt register
   xchg(&(mycpu()->started), 1); // tell startothers() we're up
+  cprintf("Before function scheduler\n");
   scheduler();     // start running processes
+  cprintf("End function mpmain\n");
 }
 
 pde_t entrypgdir[];  // For entry.S
