@@ -325,7 +325,8 @@ scheduler(void)
   struct proc *p;
   struct cpu *c = mycpu();
   c->proc = 0;
-  cprintf("function scheduler in proc.c\n");  
+  cprintf("function scheduler in proc.c by %d\n" , c->apicid );  
+  cprintf("%d use ptable start at %p\n" , c->apicid , ptable.proc );
   for(;;){
     // Enable interrupts on this processor.
     sti();
@@ -351,7 +352,6 @@ scheduler(void)
       c->proc = 0;
     }
     release(&ptable.lock);
-
   }
 }
 
